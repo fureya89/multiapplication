@@ -9,12 +9,17 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/multiapplication/src/Controller/CommentController.php'|file_link(0) }}">src/Controller/CommentController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/multiapplication/templates/comment/index.html.twig'|file_link(0) }}">templates/comment/index.html.twig</a></code></li>
-    </ul>
+    {% if comments|length > 0 %}
+        <div>There are {{ comments|length }} comments.</div>
+        {% for comment in comments %}
+            {{ comment.contents }}<br/><br/>
+        {% endfor %}
+
+
+    {% else %}
+        <div>No comments have been posted yet for this conference.</div>
+    {% endif %}
+
 </div>
 {% endblock %}
